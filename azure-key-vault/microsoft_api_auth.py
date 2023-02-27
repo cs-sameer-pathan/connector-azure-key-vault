@@ -79,7 +79,6 @@ class MicrosoftAuth:
             update_connnector_config(connector_info['connector_name'], connector_info['connector_version'],
                                      connector_config,
                                      connector_config['config_id'])
-
             return "Bearer {0}".format(connector_config.get('vaultAccessToken'))
         else:
             logger.info("Token is valid till {0}".format(expires))
@@ -102,9 +101,7 @@ class MicrosoftAuth:
                     err_resp = res.json()
                     if err_resp and 'error' in err_resp:
                         failure_msg = err_resp.get('error_description')
-                        error_msg = 'Response {0}: {1} \n Error Message: {2}'.format(res.status_code,
-                                                                                     res.reason,
-                                                                                     failure_msg if failure_msg else '')
+                        error_msg = 'Response {0}: {1} \n Error Message: {2}'.format(res.status_code, res.reason, failure_msg if failure_msg else '')
                     else:
                         err_resp = res.text
                 else:

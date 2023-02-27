@@ -8,8 +8,8 @@ CLIENT_CREDENTIALS = 'client_credentials'
 
 MANAGE_SERVER_URL = 'https://management.azure.com/subscriptions'
 
-MANAGE_API_VERSION ='2019-09-01'# '2022-07-01'
+MANAGE_API_VERSION = '2019-09-01'
 MANAGE_SCOPE = "https://management.azure.com//.default"
 
-VAULT_API_VERSION ='7.4'
+VAULT_API_VERSION = '7.4'
 VAULT_SCOPE = "https://vault.azure.net/.default"

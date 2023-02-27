@@ -32,12 +32,10 @@ class AzureKeyVault(object):
         service_url = self.manage_server_url + endpoint
         logger.debug('Request URL {}'.format(service_url))
         params['api-version'] = MANAGE_API_VERSION
-
         try:
             if data:
                 data = json.dumps(data)
-            response = requests.request(method, service_url, data=data, headers=headers, params=params,
-                                        verify=self.verify_ssl)
+            response = requests.request(method, service_url, data=data, headers=headers, params=params,verify=self.verify_ssl)
             if response.ok:
                 content_type = response.headers.get('Content-Type')
                 if response.text != "" and 'application/json' in content_type:
@@ -249,7 +247,6 @@ def list_or_get_certificate(config, params):
         endpoint += '/{0}/{1}'.format(certificate_name, certificate_version)
         response = kv.make_rest_call_vault(endpoint=endpoint, method='GET', params=payload)
         return response
-
     payload["includePending"] = params.get('includePending')
     size = params.get('size')
     if size:
@@ -344,15 +341,12 @@ operations = {
     'list_keys': list_or_get_keys,
     'get_key': list_or_get_keys,
     'delete_key': delete_key,
-
     'list_secret': list_or_get_secret,
     'get_secret': list_or_get_secret,
     'delete_secret': delete_secret,
-
     'list_certificate': list_or_get_certificate,
     'get_certificate': list_or_get_certificate,
     'delete_certificate': delete_certificate,
     'get_certificate_policy': get_certificate_policy,
-
     'get_versions': get_versions
 }
