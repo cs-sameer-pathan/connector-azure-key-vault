@@ -6,10 +6,9 @@
   Copyright end """
 
 from connectors.core.connector import Connector, get_logger, ConnectorError
-from .operations import *
+from .operations import operations, check, list_key_vault
 
 logger = get_logger('azure-key-vault')
-
 
 
 class AzureKeyVault(Connector):

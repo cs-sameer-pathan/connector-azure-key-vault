@@ -8,7 +8,7 @@ import json
 import requests
 from connectors.core.connector import get_logger, ConnectorError
 from .microsoft_api_auth import MicrosoftAuth
-from .const import *
+from .constants import *
 from connectors.core.utils import update_connnector_config
 
 logger = get_logger('azure-key-vault')
@@ -35,7 +35,7 @@ class AzureKeyVault(object):
         try:
             if data:
                 data = json.dumps(data)
-            response = requests.request(method, service_url, data=data, headers=headers, params=params,verify=self.verify_ssl)
+            response = requests.request(method, service_url, data=data, headers=headers, params=params, verify=self.verify_ssl)
             if response.ok:
                 content_type = response.headers.get('Content-Type')
                 if response.text != "" and 'application/json' in content_type:

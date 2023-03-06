@@ -9,7 +9,7 @@ from time import time, ctime
 from datetime import datetime
 from connectors.core.connector import get_logger, ConnectorError
 from connectors.core.utils import update_connnector_config
-from .const import *
+from .constants import *
 
 logger = get_logger('azure-key-vault')
 
