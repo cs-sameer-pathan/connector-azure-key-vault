@@ -52,6 +52,7 @@ class MicrosoftAuth:
         expires = connector_config['expiresOn']
         expires_ts = self.convert_ts_epoch(expires)
         if ts_now > float(expires_ts):
+            config_id = connector_config['config_id']
             logger.info("Token expired at {0}".format(expires))
             token_resp = self.generate_token()
             connector_config['accessToken'] = token_resp['accessToken']
@@ -60,7 +61,7 @@ class MicrosoftAuth:
             update_connnector_config(connector_info['connector_name'], connector_info['connector_version'],
                                      connector_config,
                                      connector_config['config_id'])
-
+            connector_config['config_id'] = config_id
             return "Bearer {0}".format(connector_config.get('accessToken'))
         else:
             logger.info("Token is valid till {0}".format(expires))
@@ -97,13 +98,12 @@ class MicrosoftAuth:
                 return res.json()
             else:
                 if res.text != "":
-                    error_msg = ''
                     err_resp = res.json()
                     if err_resp and 'error' in err_resp:
                         failure_msg = err_resp.get('error_description')
                         error_msg = 'Response {0}: {1} \n Error Message: {2}'.format(res.status_code, res.reason, failure_msg if failure_msg else '')
                     else:
-                        err_resp = res.text
+                        error_msg = res.text
                 else:
                     error_msg = '{0}:{1}'.format(res.status_code, res.reason)
                 raise ConnectorError(error_msg)

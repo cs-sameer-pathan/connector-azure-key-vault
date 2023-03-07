@@ -181,8 +181,9 @@
       "category": "investigation",
       "annotation": "delete_key_vault",
       "output_schema": {
-        "status": ""
-      },
+        "status": "",
+        "result": ""
+    },
       "parameters": [
         {
           "title": "Vault Name",
@@ -326,8 +327,8 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
+          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
           "visible": true
@@ -480,8 +481,8 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
+          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
           "visible": true
@@ -659,8 +660,8 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
+          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
           "visible": true
@@ -951,8 +952,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the certificate details.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the certificate details.",
+          "description": "Specify the name of vault from which you want to retrieve the versions of key, secrets or certificate.",
+          "tooltip": "Specify the name of vault from which you want to retrieve the versions of key, secrets or certificate.",
           "required": true,
           "editable": true,
           "visible": true
@@ -961,8 +962,8 @@
           "title": "Object Name",
           "name": "object",
           "type": "select",
-          "description": "Specify the type of the object whose versions you want to retrieve from the key vault. Choose from Keys, Secrets, Certificates",
-          "tooltip": "Specify the type of the object whose versions you want to retrieve from the key vault.",
+          "description": "Specify the type of the object whose versions you want to retrieve from the key vault. You can choose one from Keys, Secrets, Certificates",
+          "tooltip": "Specify the type of the object whose versions you want to retrieve from the key vault. You can choose one from Keys, Secrets, Certificates",
           "required": true,
           "editable": true,
           "visible": true,
@@ -977,8 +978,8 @@
                 "title": "Key Name",
                 "name": "name",
                 "type": "text",
-                "description": "Specify the name of the key which you want to retrieve from the specified key vault.",
-                "tooltip": "Specify the name of the key which you want to retrieve from the specified key vault.",
+                "description": "Specify the name of the key whose versions you want to retrieve from the specified key vault.",
+                "tooltip": "Specify the name of the key whose versions you want to retrieve from the specified key vault.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -989,8 +990,8 @@
                 "title": "Secret Name",
                 "name": "name",
                 "type": "text",
-                "description": "Specify the name of the Secret which you want to retrieve from the key vault.",
-                "tooltip": "Specify the name of the Secret which you want to retrieve from the key vault.",
+                "description": "Specify the name of the Secret whose versions you want to retrieve from the key vault.",
+                "tooltip": "Specify the name of the Secret whose versions you want to retrieve from the key vault.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -1001,8 +1002,8 @@
                 "title": "Certificate Name",
                 "name": "name",
                 "type": "text",
-                "description": "Specify the name of the certificate of which certificate policy you want to retrieve from the key vault.",
-                "tooltip": "Specify the name of the certificate of which certificate policy you want to retrieve from the key vault.",
+                "description": "Specify the name of the certificate of whose versions you want to retrieve from the key vault.",
+                "tooltip": "Specify the name of the certificate of whose versions you want to retrieve from the key vault.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -1024,12 +1025,12 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25",
+          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
-          "visible": true
+          "visible": true,
+          "value": 25
         }
       ],
       "enabled": true
