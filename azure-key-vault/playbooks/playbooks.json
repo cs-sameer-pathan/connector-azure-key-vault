@@ -1,0 +1,1425 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "@context": "/api/3/contexts/WorkflowCollection",
+      "@type": "WorkflowCollection",
+      "name": "Sample - Azure Key Vault - 1.0.0",
+      "description": "Sample playbooks for \"Azure Key Vault\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "visible": true,
+      "image": null,
+      "id": 404,
+      "createDate": 1677496387.465459,
+      "modifyDate": 1677496387.465459,
+      "deletedAt": null,
+      "importedBy": [],
+      "recordTags": [
+        "Microsoft",
+        "azure-key-vault"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "List Key Vaults",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "The List operation gets information about the vaults associated with the subscription.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496415,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ad659e03-fc86-4f32-bb56-ef418410b429",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "List Key Vaults",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "list_key_vault",
+                "operationTitle": "List Key Vaults",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "ab98ca4f-f708-4ae0-9992-c668289f18d4"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "d00b4cd2-ba7d-418a-9fe9-e0a9c00ca50f",
+                "title": "Azure Key Vault: List Key Vaults",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "ad659e03-fc86-4f32-bb56-ef418410b429"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> List Key Vaults",
+              "targetStep": "/api/3/workflow_steps/ab98ca4f-f708-4ae0-9992-c668289f18d4",
+              "sourceStep": "/api/3/workflow_steps/ad659e03-fc86-4f32-bb56-ef418410b429",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "01bdf05d-8019-401b-ab94-dc9ec58615c2"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "4309e3a6-a544-42ec-a893-96a9e12d7fe3",
+          "id": 5057,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Key Vault",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Gets the specified Azure key vault.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496453,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d6e08b02-4125-4925-a64b-01403713f687",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Key Vault",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "get_key_vault",
+                "operationTitle": "Get Key Vault",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "afe0f3dc-ed72-4c59-bd78-19a26073af94"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "b255c877-1b63-472f-a67b-87282f331498",
+                "title": "Azure Key Vault: Get Key Vault",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d6e08b02-4125-4925-a64b-01403713f687"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Key Vault",
+              "targetStep": "/api/3/workflow_steps/afe0f3dc-ed72-4c59-bd78-19a26073af94",
+              "sourceStep": "/api/3/workflow_steps/d6e08b02-4125-4925-a64b-01403713f687",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "8eed0987-75bb-41a6-baf2-199fede9f870"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "05962efd-fb51-4efb-b4f6-c6419ae0e912",
+          "id": 5058,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Key Vault",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Deletes the specified vault form Azure key vault.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496458,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/46155e0d-b93b-4703-b09b-fb25b2ae339c",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0650ffc9-3499-42d4-805e-82ddc35e7dae",
+                "title": "Azure Key Vault: Delete Key Vault",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "46155e0d-b93b-4703-b09b-fb25b2ae339c"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Key Vault",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "delete_key_vault",
+                "operationTitle": "Delete Key Vault",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "956792f0-9260-4af1-aac3-4731ddb68be6"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Delete Key Vault",
+              "targetStep": "/api/3/workflow_steps/956792f0-9260-4af1-aac3-4731ddb68be6",
+              "sourceStep": "/api/3/workflow_steps/46155e0d-b93b-4703-b09b-fb25b2ae339c",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "f7741707-59e0-4ca0-8334-b120e94abba0"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "e98e79ca-a51d-4f6b-b106-c96da15ffedc",
+          "id": 5059,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Update Vault's Access Policies",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Updates access policies in the specified Azure key vault based on input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496464,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/8b39cbae-4466-4e0c-bb47-771a663c0d6d",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Update Vaults Access Policies",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "update_vault_access_policy",
+                "operationTitle": "Update Vault's Access Policies",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "47adeca1-724d-48a4-884b-4ecd9388668f"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "06b25a6e-e841-44fd-aa2c-5ea9bf2d4c81",
+                "title": "Azure Key Vault: Update Vault's Access Policies",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "8b39cbae-4466-4e0c-bb47-771a663c0d6d"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Update Vault's Access Policies",
+              "targetStep": "/api/3/workflow_steps/47adeca1-724d-48a4-884b-4ecd9388668f",
+              "sourceStep": "/api/3/workflow_steps/8b39cbae-4466-4e0c-bb47-771a663c0d6d",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "ea8ff6b1-5666-4df5-8839-44673350de47"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "06b83e35-0506-49a7-9d3d-8aba45503ac2",
+          "id": 5060,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Keys",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Retrieves a list of the keys from the Azure Key Vault based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496468,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/4b1bade8-a0f0-46e0-b896-fac419f611ae",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "064ae857-e49d-4091-8858-4d1d38aef6b6",
+                "title": "Azure Key Vault: Get All Keys",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "4b1bade8-a0f0-46e0-b896-fac419f611ae"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Keys",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "list_keys",
+                "operationTitle": "Get All Keys",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "71281504-2dd0-4798-b62f-2fb8f5679ff1"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get All Keys",
+              "targetStep": "/api/3/workflow_steps/71281504-2dd0-4798-b62f-2fb8f5679ff1",
+              "sourceStep": "/api/3/workflow_steps/4b1bade8-a0f0-46e0-b896-fac419f611ae",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "9285a3e2-94e8-46be-9e5e-204fd154b6f2"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "deb724e4-b4dd-40d1-a36b-dca727c79b0b",
+          "id": 5061,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Key Details",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Gets the public part of a stored key from Azure Key Vault.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496422,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/82564fae-3a51-444f-b2e9-aa3338857ba0",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Key Details",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "get_key",
+                "operationTitle": "Get Key Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "43bfcce9-a938-4b93-b3d1-aab488ebbdc6"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "20c8a8af-85da-4f49-a84f-59fa67ebf5b1",
+                "title": "Azure Key Vault: Get Key Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "82564fae-3a51-444f-b2e9-aa3338857ba0"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Key Details",
+              "targetStep": "/api/3/workflow_steps/43bfcce9-a938-4b93-b3d1-aab488ebbdc6",
+              "sourceStep": "/api/3/workflow_steps/82564fae-3a51-444f-b2e9-aa3338857ba0",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "4a4c2096-8b87-431b-810f-66e549fbe260"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "4b751aab-61ac-4488-860c-f4c7e3d9c492",
+          "id": 5062,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Key",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Deletes a key from storage in Azure Key Vault based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496472,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/de0ef493-98ca-47ef-bc2c-25682143e5fd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Key",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "delete_key",
+                "operationTitle": "Delete Key",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "b4595523-a1e4-4fa4-986a-b78e5f04b076"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "fbd43f44-0834-4ca7-aae4-2fbe24e46c9b",
+                "title": "Azure Key Vault: Delete Key",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "de0ef493-98ca-47ef-bc2c-25682143e5fd"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Delete Key",
+              "targetStep": "/api/3/workflow_steps/b4595523-a1e4-4fa4-986a-b78e5f04b076",
+              "sourceStep": "/api/3/workflow_steps/de0ef493-98ca-47ef-bc2c-25682143e5fd",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "bd25cf3b-ffae-43b0-98cc-941043b1cb01"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "664ce6b9-7531-4ead-97eb-22de600037fd",
+          "id": 5063,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Secrets",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Retrieves a list of the secrets from the Azure Key Vault based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496475,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/d11e43c0-00a6-4c49-b5ee-38cd181857a2",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Secrets",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "list_secret",
+                "operationTitle": "Get All Secrets",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "2a905bb1-1134-48ba-add2-0415d6ad70b1"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0b31496f-7983-4d1d-83a8-5559a3526c8f",
+                "title": "Azure Key Vault: Get All Secrets",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "d11e43c0-00a6-4c49-b5ee-38cd181857a2"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get All Secrets",
+              "targetStep": "/api/3/workflow_steps/2a905bb1-1134-48ba-add2-0415d6ad70b1",
+              "sourceStep": "/api/3/workflow_steps/d11e43c0-00a6-4c49-b5ee-38cd181857a2",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "feb8005d-0807-4725-883c-ed345794f097"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "74a2ebb8-6330-44a9-8e0e-8fe43efd0154",
+          "id": 5064,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Secret Details",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Gets a Secret from specified Azure Key Vault.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496480,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/0f49d636-ffc2-452a-8d06-13e899511f68",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "6d6cd687-137f-4124-8366-08900fa7eb73",
+                "title": "Azure Key Vault: Get Secret Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "0f49d636-ffc2-452a-8d06-13e899511f68"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Secret Details",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "get_secret",
+                "operationTitle": "Get Secret Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "fc4accdd-8cb7-4b68-8e20-17537f169ee1"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Secret Details",
+              "targetStep": "/api/3/workflow_steps/fc4accdd-8cb7-4b68-8e20-17537f169ee1",
+              "sourceStep": "/api/3/workflow_steps/0f49d636-ffc2-452a-8d06-13e899511f68",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "c88c801b-35c3-4a75-8ebd-4eaf571f18a7"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "e29df307-1018-4621-8fb4-56926985771d",
+          "id": 5065,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Secret",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Deletes the Secret from specified vault in Azure Key Vault.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496483,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5a941e52-44f7-44cb-b054-7a730b1edb49",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "e9cbc0c0-cb2d-407f-af1d-e2998faddedc",
+                "title": "Azure Key Vault: Delete Secret",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "5a941e52-44f7-44cb-b054-7a730b1edb49"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Secret",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "delete_secret",
+                "operationTitle": "Delete Secret",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "d21cddf6-935d-4941-a868-4f575289c07c"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Delete Secret",
+              "targetStep": "/api/3/workflow_steps/d21cddf6-935d-4941-a868-4f575289c07c",
+              "sourceStep": "/api/3/workflow_steps/5a941e52-44f7-44cb-b054-7a730b1edb49",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "5ecd45cf-9901-4d5f-a833-df70f728ac74"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "d06d309a-71a7-452d-9e60-041b5762c06e",
+          "id": 5066,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get All Certificates",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Retrieves a list of the certificates from the Azure Key Vault based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496487,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/5799440d-92e7-45e1-83eb-79c9bcdc77cb",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "d8dbde96-3ba8-456c-a7e7-a228ca647cbb",
+                "title": "Azure Key Vault: Get All Certificates",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "5799440d-92e7-45e1-83eb-79c9bcdc77cb"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get All Certificates",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": {
+                  "includePending": false
+                },
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "list_certificate",
+                "operationTitle": "Get All Certificates",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "db37ff57-64c2-4b9e-9d17-c2473303dea5"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get All Certificates",
+              "targetStep": "/api/3/workflow_steps/db37ff57-64c2-4b9e-9d17-c2473303dea5",
+              "sourceStep": "/api/3/workflow_steps/5799440d-92e7-45e1-83eb-79c9bcdc77cb",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "6dc52552-6333-4be5-a999-dd18ad02e10a"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "40426dca-e614-4ed4-93b8-8466e3465c46",
+          "id": 5067,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Certificate Details",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Retrieves the certificate details from the Azure Key Vault based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496498,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/ff0ddf99-0d78-4f0a-b8b9-f7c17c4878f3",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Certificate Details",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "get_certificate",
+                "operationTitle": "Get Certificate Details",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "09e8ea0d-abcd-4d0e-abc8-94af70463212"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "df167d2a-9204-45ad-a5fe-08e9a6f773b0",
+                "title": "Azure Key Vault: Get Certificate Details",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "ff0ddf99-0d78-4f0a-b8b9-f7c17c4878f3"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Certificate Details",
+              "targetStep": "/api/3/workflow_steps/09e8ea0d-abcd-4d0e-abc8-94af70463212",
+              "sourceStep": "/api/3/workflow_steps/ff0ddf99-0d78-4f0a-b8b9-f7c17c4878f3",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "3bc05c23-e01e-4b51-bb11-2d42722399b9"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "ab93c41b-1579-4469-943d-93b6ee136b05",
+          "id": 5068,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Delete Certificate",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Deletes certificate from the Azure Key Vault.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496502,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/06a8a893-4496-4245-b2bd-7cfc1488aae5",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "0abd778e-167d-4723-b2e7-c0596f2decd8",
+                "title": "Azure Key Vault: Delete Certificate",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "06a8a893-4496-4245-b2bd-7cfc1488aae5"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Delete Certificate",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "delete_certificate",
+                "operationTitle": "Delete Certificate",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "7dbf5fc1-468d-45ae-a740-424432be95e3"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Delete Certificate",
+              "targetStep": "/api/3/workflow_steps/7dbf5fc1-468d-45ae-a740-424432be95e3",
+              "sourceStep": "/api/3/workflow_steps/06a8a893-4496-4245-b2bd-7cfc1488aae5",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "1ececb23-bb82-4869-9bba-1104bc50e02e"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "19c65f4e-0386-42ef-89c9-47a4f4acb59d",
+          "id": 5069,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Certificate Policy",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Retrieves the specified certificate policy resources in the specified key vault.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496507,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/85203fca-a9b6-466f-948c-019cf0f17bb2",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Certificate Policy",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "get_certificate_policy",
+                "operationTitle": "Get Certificate Policy",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "3fa765d7-d2fd-4dac-b4da-96fbcf7f433b"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "14bcf1aa-d9b9-4bd4-a7c1-58824f4cb04c",
+                "title": "Azure Key Vault: Get Certificate Policy",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "85203fca-a9b6-466f-948c-019cf0f17bb2"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Certificate Policy",
+              "targetStep": "/api/3/workflow_steps/3fa765d7-d2fd-4dac-b4da-96fbcf7f433b",
+              "sourceStep": "/api/3/workflow_steps/85203fca-a9b6-466f-948c-019cf0f17bb2",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "30ab25b1-5554-4ae2-9e11-738011c537be"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "fa7868a5-c45b-4061-81a4-d5d9198184a4",
+          "id": 5070,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Get Versions",
+          "aliasName": null,
+          "tag": "#Azure Key Vault",
+          "description": "Gets Versions of specified secret, key or certificate from Azure Key Vault based on the input parameters you have specified.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1677496402,
+          "collection": "/api/3/workflow_collections/22848b8f-884a-407e-95a2-3b5d1b97d30d",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/98ea57fe-eb6a-4de4-8acd-c04f1484d900",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "6604a2d8-d72b-4b57-8556-c36c2854d7b1",
+                "title": "Azure Key Vault: Get Versions",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "98ea57fe-eb6a-4de4-8acd-c04f1484d900"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Get Versions",
+              "description": null,
+              "arguments": {
+                "name": "Azure Key Vault",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "azure-key-vault",
+                "operation": "get_versions",
+                "operationTitle": "Get Versions",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "b8115086-e444-4166-b743-12986997e6e7"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start-> Get Versions",
+              "targetStep": "/api/3/workflow_steps/b8115086-e444-4166-b743-12986997e6e7",
+              "sourceStep": "/api/3/workflow_steps/98ea57fe-eb6a-4de4-8acd-c04f1484d900",
+              "label": null,
+              "isExecuted": false,
+              "uuid": "99dedbd8-b68a-4fb0-a33b-aef14a7ca627"
+            }
+          ],
+          "groups": [],
+          "priority": null,
+          "uuid": "e6cd80e6-1518-4e4c-87e4-5bf2073d6836",
+          "id": 5071,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "Microsoft",
+            "azure-key-vault"
+          ]
+        }
+      ]
+    }
+  ],
+  "exported_tags": [
+    "Microsoft",
+    "azure-key-vault"
+  ]
+}
