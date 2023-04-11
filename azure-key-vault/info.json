@@ -9,26 +9,26 @@
   "category": "Identity and Access Management",
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/azure-key-vault/553/azure-key-vault-v1-0-0",
   "configuration": {
     "fields": [
       {
         "title": "Directory (tenant) ID",
         "name": "tenant_id",
         "type": "text",
-        "description": "ID of the tenant that you have been provided for your Azure Active Directory instance",
-        "tooltip": "ID of the tenant that you have been provided for your Azure Active Directory instance",
+        "description": "Tenant ID that you have been provided for your Azure Active Directory instance",
+        "tooltip": "Tenant ID that you have been provided for your Azure Active Directory instance",
         "required": true,
         "editable": true,
         "visible": true,
         "value": ""
       },
-       {
+      {
         "title": "Subscription ID",
         "name": "subscription_id",
         "type": "text",
         "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.",
-        "tooltip": "Subscription credentials which uniquely identify Microsoft Azure subscription.",
+        "tooltip": "Subscription credentials which uniquely identify Microsoft Azure subscription. ",
         "required": true,
         "editable": true,
         "visible": true,
@@ -49,8 +49,8 @@
         "title": "Application (Client) Secret",
         "name": "client_secret",
         "type": "password",
-        "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
-        "tooltip": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API.",
+        "description": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp",
+        "tooltip": "Unique Client Secret of the Azure Active Directory application that is used to create an authentication token required to access the API. For information on how to get the secret key, see https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-atp/exposed-apis-create-app-webapp.",
         "required": true,
         "editable": true,
         "visible": true,
@@ -64,7 +64,7 @@
         "type": "checkbox",
         "name": "verify_ssl",
         "value": true,
-        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set as True."
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not. By default, this option is set to True."
       }
     ]
   },
@@ -72,7 +72,7 @@
     {
       "operation": "list_key_vault",
       "title": "List Key Vaults",
-      "description": "The List operation gets information about the vaults associated with the subscription.",
+      "description": "Gets information about the vaults associated with the subscription ID specified in the configuration parameters. ",
       "category": "investigation",
       "annotation": "list_key_vault",
       "output_schema": {
@@ -92,8 +92,8 @@
           "title": "Skip Token",
           "name": "skip_token",
           "type": "text",
-          "description": "(Optional) Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
-          "tooltip": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "(Optional) Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls.",
           "required": false,
           "editable": true,
           "visible": true
@@ -102,8 +102,9 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "(Optional) Maximum number of key vaults that this operation should return from Azure Key Vault",
-          "tooltip": "Maximum number of key vaults that this operation should return from Azure Key Vault",
+          "placeholder": "The value should be in the range 1-1000.",
+          "description": "(Optional) Specify the maximum number of key vaults that this operation should return from Azure Key Vault. The value should be in the range 1-1000.",
+          "tooltip": "Specify the maximum number of key vaults that this operation should return from Azure Key Vault. The value should be in the range 1-1000.",
           "required": false,
           "editable": true,
           "visible": true
@@ -114,7 +115,7 @@
     {
       "operation": "get_key_vault",
       "title": "Get Key Vault",
-      "description": "Gets the specified Azure key vault.",
+      "description": "Gets the specified Azure key vault based on the vault name and resource group name you have specified. ",
       "category": "investigation",
       "annotation": "get_key_vault",
       "output_schema": {
@@ -155,8 +156,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of the vault whose details you want to fetch from the Azure Key Vault.",
-          "tooltip": "Specify the name of the vault whose details you want to fetch from the Azure Key Vault.",
+          "description": "Specify the name of the vault whose details you want to fetch from the Azure Key Vault. ",
+          "tooltip": "Specify the name of the vault whose details you want to fetch from the Azure Key Vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -165,8 +166,8 @@
           "title": "Resource Group Name",
           "name": "resource_group_name",
           "type": "text",
-          "description": "Specify the name of the Resource Group to which the server belongs.",
-          "tooltip": "Specify the name of the Resource Group to which the server belongs.",
+          "description": "Specify the name of the Resource Group to which this server belongs.",
+          "tooltip": "Specify the name of the Resource Group to which this server belongs.",
           "required": true,
           "editable": true,
           "visible": true
@@ -177,20 +178,20 @@
     {
       "operation": "delete_key_vault",
       "title": "Delete Key Vault",
-      "description": "Deletes the specified vault form Azure key vault.",
+      "description": "Deletes the specified vault from Azure key vault based on the vault name and resource group name you have specified. ",
       "category": "investigation",
       "annotation": "delete_key_vault",
       "output_schema": {
         "status": "",
         "result": ""
-    },
+      },
       "parameters": [
         {
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of the vault which you want to delete from the Azure Key Vault.",
-          "tooltip": "Specify the name of the vault which you want to delete from the Azure Key Vault.",
+          "description": "Specify the name of the vault to delete from the Azure Key Vault. ",
+          "tooltip": "Specify the name of the vault to delete from the Azure Key Vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -199,8 +200,8 @@
           "title": "Resource Group Name",
           "name": "resource_group_name",
           "type": "text",
-          "description": "Specify the name of the Resource Group to which the server belongs.",
-          "tooltip": "Specify the name of the Resource Group to which the server belongs.",
+          "description": "Specify the name of the Resource Group to which this server belongs. ",
+          "tooltip": "Specify the name of the Resource Group to which this server belongs. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -211,7 +212,7 @@
     {
       "operation": "update_vault_access_policy",
       "title": "Update Vault's Access Policies",
-      "description": "Updates access policies in the specified Azure key vault based on input parameters you have specified.",
+      "description": "Updates access policies in the specified Azure key vault based on the vault name, resource group name, and other parameters you have specified. ",
       "category": "investigation",
       "annotation": "update_vault_access_policy",
       "output_schema": {
@@ -236,8 +237,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of the vault whose access policy you want to update in the Azure Key Vault.",
-          "tooltip": "Specify the name of the vault whose access policy you want to update in the Azure Key Vault.",
+          "description": "Specify the name of the vault whose access policy you want to update in the Azure Key Vault. ",
+          "tooltip": "Specify the name of the vault whose access policy you want to update in the Azure Key Vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -246,8 +247,8 @@
           "title": "Resource Group Name",
           "name": "resource_group_name",
           "type": "text",
-          "description": "Specify the name of the Resource Group to which the server belongs.",
-          "tooltip": "Specify the name of the Resource Group to which the server belongs.",
+          "description": "Specify the name of the Resource Group to which this server belongs. ",
+          "tooltip": "Specify the name of the Resource Group to which this server belongs. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -256,8 +257,8 @@
           "title": "Operation",
           "name": "operation_kind",
           "type": "select",
-          "description": "Specify the operation you want do on the permissions of access policies.",
-          "tooltip": "Specify the operation you want do on the permissions of access policies. You can choose Add, Replace or Remove",
+          "description": "Select the operation to perform on the permissions of access policies.",
+          "tooltip": "Select the operation to perform on the permissions of access policies. You can choose from the following options: Add, Replace, Remove",
           "required": true,
           "editable": true,
           "visible": true,
@@ -271,9 +272,28 @@
           "title": "Policies",
           "name": "accessPolicies",
           "type": "json",
-          "description": "Specify the policies you want update in specified key vault. For Example, {\n            \"accessPolicies\": [\n                {\n                    \"tenantId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"objectId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"permissions\": {\n                        \"keys\": [\n                            \"encrypt\"\n                        ],\n                        \"secrets\": [\n                            \"get\"\n                        ],\n                        \"certificates\": [\n                            \"get\"\n                        ]\n                    }\n                }\n            ]\n        }",
-          "tooltip": "Specify the policies you want update in specified key vault. For Example, {\n            \"accessPolicies\": [\n                {\n                    \"tenantId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"objectId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"permissions\": {\n                        \"keys\": [\n                            \"encrypt\"\n                        ],\n                        \"secrets\": [\n                            \"get\"\n                        ],\n                        \"certificates\": [\n                            \"get\"\n                        ]\n                    }\n                }\n            ]\n        }",
+          "description": "Specify the policies you want to update in the specified key vault. For Example, {\n            \"accessPolicies\": [\n                {\n                    \"tenantId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"objectId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"permissions\": {\n                        \"keys\": [\n                            \"encrypt\"\n                        ],\n                        \"secrets\": [\n                            \"get\"\n                        ],\n                        \"certificates\": [\n                            \"get\"\n                        ]\n                    }\n                }\n            ]\n        }",
+          "tooltip": "Specify the policies you want to update in the specified key vault. For Example, {\n            \"accessPolicies\": [\n                {\n                    \"tenantId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"objectId\": \"00000000-0000-0000-0000-000000000000\",\n                    \"permissions\": {\n                        \"keys\": [\n                            \"encrypt\"\n                        ],\n                        \"secrets\": [\n                            \"get\"\n                        ],\n                        \"certificates\": [\n                            \"get\"\n                        ]\n                    }\n                }\n            ]\n        }",
           "required": true,
+          "value": {
+            "accessPolicies": [
+              {
+                "tenantId": "00000000-0000-0000-0000-000000000000",
+                "objectId": "00000000-0000-0000-0000-000000000000",
+                "permissions": {
+                  "keys": [
+                    "encrypt"
+                  ],
+                  "secrets": [
+                    "get"
+                  ],
+                  "certificates": [
+                    "get"
+                  ]
+                }
+              }
+            ]
+          },
           "editable": true,
           "visible": true
         }
@@ -283,7 +303,7 @@
     {
       "operation": "list_keys",
       "title": "Get All Keys",
-      "description": "Retrieves a list of the keys from the Azure Key Vault based on the input parameters you have specified.",
+      "description": "Retrieves a list of the keys from the Azure Key Vault based on the vault name you have specified. ",
       "category": "investigation",
       "annotation": "list_keys",
       "output_schema": {
@@ -307,8 +327,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the keys.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the keys.",
+          "description": "Specify the name of the vault from which you want to retrieve the keys.",
+          "tooltip": "Specify the name of the vault from which you want to retrieve the keys.",
           "required": true,
           "editable": true,
           "visible": true
@@ -317,8 +337,8 @@
           "title": "Skip Token",
           "name": "skip_token",
           "type": "text",
-          "description": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
-          "tooltip": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls.",
           "required": false,
           "editable": true,
           "visible": true
@@ -327,8 +347,9 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "placeholder": "The value should be between 1 and 25.",
+          "description": "Specify the maximum number of keys that this operation should return from Azure Key Vault. The value should be between 1 and 25. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specify the maximum number of keys that this operation should return from Azure Key Vault. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
           "visible": true
@@ -339,7 +360,7 @@
     {
       "operation": "get_key",
       "title": "Get Key Details",
-      "description": "Gets the public part of a stored key from Azure Key Vault.",
+      "description": "Gets the public part of a stored key from Azure Key Vault based on the vault name, key name, and the key version you have specified. ",
       "category": "investigation",
       "annotation": "get_key",
       "output_schema": {
@@ -363,8 +384,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the key.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the key.",
+          "description": "Specify the name of the vault from to retrieve the key. ",
+          "tooltip": "Specify the name of the vault from to retrieve the key. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -373,8 +394,8 @@
           "title": "Key Name",
           "name": "key_name",
           "type": "text",
-          "description": "Specify the name of the key which you want to retrieve from the specified key vault.",
-          "tooltip": "Specify the name of the key which you want to retrieve from the specified key vault.",
+          "description": "Specify the name of the key to retrieve from the specified key vault. ",
+          "tooltip": "Specify the name of the key to retrieve from the specified key vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -383,8 +404,8 @@
           "title": "Key Version",
           "name": "key-version",
           "type": "text",
-          "description": "Specify the version of the key which you want to retrieve from the key vault.",
-          "tooltip": "Specify the version of the key which you want to retrieve from the key vault.",
+          "description": "Specify the version of the key to retrieve from the key vault. ",
+          "tooltip": "Specify the version of the key to retrieve from the key vault. ",
           "required": false,
           "editable": true,
           "visible": true
@@ -395,7 +416,7 @@
     {
       "operation": "delete_key",
       "title": "Delete Key",
-      "description": "Deletes a key from storage in Azure Key Vault based on the input parameters you have specified.",
+      "description": "Deletes a key from storage in Azure Key Vault based on the vault name and the key name you have specified. ",
       "category": "investigation",
       "annotation": "delete_key",
       "output_schema": {
@@ -423,8 +444,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to delete the key.",
-          "tooltip": "Specify the name of vault from which you want to delete the key.",
+          "description": "Specify the name of vault from which to delete the key. ",
+          "tooltip": "Specify the name of vault from which to delete the key. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -433,8 +454,8 @@
           "title": "Key Name",
           "name": "key_name",
           "type": "text",
-          "description": "Specify the name of the key which you want to delete from the specified key vault.",
-          "tooltip": "Specify the name of the key which you want to delete from the specified key vault.",
+          "description": "Specify the name of the key which to delete from the specified key vault. ",
+          "tooltip": "Specify the name of the key which to delete from the specified key vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -445,7 +466,7 @@
     {
       "operation": "list_secret",
       "title": "Get All Secrets",
-      "description": "Retrieves a list of the secrets from the Azure Key Vault based on the input parameters you have specified.",
+      "description": "Retrieves a list of the secrets from the Azure Key Vault based on the vault name you have specified. ",
       "category": "investigation",
       "annotation": "list_secret",
       "output_schema": {
@@ -471,8 +492,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the Secrets.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the Secrets.",
+          "description": "Specify the name of the vault from which you want to retrieve the Secrets. ",
+          "tooltip": "Specify the name of the vault from which you want to retrieve the Secrets. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -481,8 +502,9 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "placeholder": "The value should be between 1 and 25.",
+          "description": "Specify the maximum number of secrets that this operation should return from Azure Key Vault. The value should be between 1 and 25. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specify the maximum number of secrets that this operation should return from Azure Key Vault. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
           "visible": true
@@ -491,8 +513,8 @@
           "title": "Skip Token",
           "name": "skip_token",
           "type": "text",
-          "description": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
-          "tooltip": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls. ",
+          "tooltip": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls. ",
           "required": false,
           "editable": true,
           "visible": true
@@ -503,7 +525,7 @@
     {
       "operation": "get_secret",
       "title": "Get Secret Details",
-      "description": "Gets a Secret from specified Azure Key Vault.",
+      "description": "Gets a Secret from specified Azure Key Vault vault name, secret name, and the secret version you have specified. ",
       "category": "investigation",
       "annotation": "get_secret",
       "output_schema": {
@@ -525,8 +547,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the Secret.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the Secret.",
+          "description": "Specify the name of the vault from which to retrieve the Secret. ",
+          "tooltip": "Specify the name of the vault from which to retrieve the Secret. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -535,8 +557,8 @@
           "title": "Secret Name",
           "name": "secret_name",
           "type": "text",
-          "description": "Specify the name of the Secret which you want to retrieve from the key vault.",
-          "tooltip": "Specify the name of the Secret which you want to retrieve from the key vault.",
+          "description": "Specify the name of the secret to retrieve from the key vault. ",
+          "tooltip": "Specify the name of the secret to retrieve from the key vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -545,8 +567,8 @@
           "title": "Secret Version",
           "name": "secret_version",
           "type": "text",
-          "description": "Specify the version of the secret which you want to retrieve from the key vault.",
-          "tooltip": "Specify the version of the secret which you want to retrieve from the key vault.",
+          "description": "Specify the version of the secret to retrieve from the key vault. ",
+          "tooltip": "Specify the version of the secret to retrieve from the key vault. ",
           "required": false,
           "editable": true,
           "visible": true
@@ -557,7 +579,7 @@
     {
       "operation": "delete_secret",
       "title": "Delete Secret",
-      "description": "Deletes the Secret from specified vault in Azure Key Vault.",
+      "description": "Deletes the Secret from specified vault in Azure Key Vault based on the vault name and the secret name you have specified.. ",
       "category": "investigation",
       "annotation": "delete_secret",
       "output_schema": {
@@ -581,8 +603,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to delete the Secret.",
-          "tooltip": "Specify the name of vault from which you want to delete the Secret.",
+          "description": "Specify the name of the vault from which to delete the Secret. ",
+          "tooltip": "Specify the name of the vault from which to delete the Secret. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -591,8 +613,8 @@
           "title": "Secret Name",
           "name": "secret_name",
           "type": "text",
-          "description": "Specify the name of the Secret which you want to delete from the specified key vault.",
-          "tooltip": "Specify the name of the Secret which you want to delete from the specified key vault.",
+          "description": "Specify the name of the Secret to delete from the specified key vault. ",
+          "tooltip": "Specify the name of the Secret to delete from the specified key vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -603,7 +625,7 @@
     {
       "operation": "list_certificate",
       "title": "Get All Certificates",
-      "description": "Retrieves a list of the certificates from the Azure Key Vault based on the input parameters you have specified.",
+      "description": "Retrieves a list of the certificates from the Azure Key Vault based on the vault name you have specified. ",
       "category": "investigation",
       "annotation": "list_certificate",
       "output_schema": {
@@ -629,8 +651,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the Certificates.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the Certificates.",
+          "description": "Specify the name of the vault from which you want to retrieve the Certificates. ",
+          "tooltip": "Specify the name of the vault from which you want to retrieve the Certificates. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -639,8 +661,8 @@
           "title": "Include Pending",
           "name": "includePending",
           "type": "checkbox",
-          "description": "Specifies whether to include certificates which are not completely provisioned.",
-          "tooltip": "Specifies whether to include certificates which are not completely provisioned. By default it is set as false",
+          "description": "Specifies whether to include certificates that are not completely provisioned.",
+          "tooltip": "Specifies whether to include certificates which are not completely provisioned. By default it is set as false.",
           "required": false,
           "editable": true,
           "visible": true,
@@ -650,8 +672,8 @@
           "title": "Skip Token",
           "name": "skip_token",
           "type": "text",
-          "description": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
-          "tooltip": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls. ",
+          "tooltip": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls. ",
           "required": false,
           "editable": true,
           "visible": true
@@ -660,8 +682,9 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "placeholder": "The value should be between 1 and 25.",
+          "description": "Specify the maximum number of certificates that this operation should return from Azure Key Vault. The value should be between 1 and 25. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specify the maximum number of certificates that this operation should return from Azure Key Vault. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
           "visible": true
@@ -672,7 +695,7 @@
     {
       "operation": "get_certificate",
       "title": "Get Certificate Details",
-      "description": "Retrieves the certificate details from the Azure Key Vault based on the input parameters you have specified.",
+      "description": "Retrieves the certificate details from the Azure Key Vault based on the vault name, certificate name, and the certificate version you have specified. ",
       "category": "investigation",
       "annotation": "get_certificate",
       "output_schema": {
@@ -741,8 +764,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the certificate details.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the certificate details.",
+          "description": "Specify the name of the vault from which you want to retrieve the certificate details. ",
+          "tooltip": "Specify the name of the vault from which you want to retrieve the certificate details. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -751,8 +774,8 @@
           "title": "Certificate Name",
           "name": "certificate_name",
           "type": "text",
-          "description": "Specify the name of the certificate which you want to retrieve from the key vault.",
-          "tooltip": "Specify the name of the certificate which you want to retrieve from the key vault.",
+          "description": "Specify the name of the certificate which you want to retrieve from the key vault. ",
+          "tooltip": "Specify the name of the certificate which you want to retrieve from the key vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -761,8 +784,8 @@
           "title": "Certificate Version",
           "name": "certificate-version",
           "type": "text",
-          "description": "Specify the version of the certificate which you want to retrieve from the key vault.",
-          "tooltip": "Specify the version of the certificate which you want to retrieve from the key vault.",
+          "description": "Specify the version of the certificate which you want to retrieve from the key vault. ",
+          "tooltip": "Specify the version of the certificate which you want to retrieve from the key vault. ",
           "required": false,
           "editable": true,
           "visible": true
@@ -773,7 +796,7 @@
     {
       "operation": "delete_certificate",
       "title": "Delete Certificate",
-      "description": "Deletes certificate from the Azure Key Vault.",
+      "description": "Deletes certificate from the Azure Key Vault based on the vault name and the certificate name you have specified. ",
       "category": "investigation",
       "annotation": "delete_certificate",
       "output_schema": {
@@ -846,8 +869,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to delete the certificate.",
-          "tooltip": "Specify the name of vault from which you want to delete the certificate.",
+          "description": "Specify the name of the vault from which to delete the certificate. ",
+          "tooltip": "Specify the name of the vault from which to delete the certificate. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -856,8 +879,8 @@
           "title": "Certificate Name",
           "name": "certificate_name",
           "type": "text",
-          "description": "Specify the name of the certificate which you want to delete from the key vault.",
-          "tooltip": "Specify the name of the certificate which you want to delete from the key vault.",
+          "description": "Specify the name of the certificate to delete from the key vault. ",
+          "tooltip": "Specify the name of the certificate to delete from the key vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -868,7 +891,7 @@
     {
       "operation": "get_certificate_policy",
       "title": "Get Certificate Policy",
-      "description": "Retrieves the specified certificate policy resources in the specified key vault.",
+      "description": "Retrieves the specified certificate policy resources in the specified key vault based on the vault name and the certificate name you have specified. ",
       "category": "investigation",
       "annotation": "get_certificate_policy",
       "output_schema": {
@@ -918,8 +941,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the certificate policy.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the certificate policy.",
+          "description": "Specify the name of the vault from which to retrieve the certificate policy.",
+          "tooltip": "Specify the name of the vault from which to retrieve the certificate policy. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -928,8 +951,8 @@
           "title": "Certificate Name",
           "name": "certificate_name",
           "type": "text",
-          "description": "Specify the name of the certificate of which certificate policy you want to retrieve  from the key vault.",
-          "tooltip": "Specify the name of the certificate of which certificate policy you want to retrieve  from the key vault.",
+          "description": "Specify the name of the certificate whose policy to retrieve from the key vault. ",
+          "tooltip": "Specify the name of the certificate whose policy to retrieve from the key vault. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -940,7 +963,7 @@
     {
       "operation": "get_versions",
       "title": "Get Versions",
-      "description": "Gets Versions of specified secret, key or certificate from Azure Key Vault based on the input parameters you have specified.",
+      "description": "Gets Versions of specified secret, key, or certificate from Azure Key Vault based on the vault name and the object name you have specified.",
       "category": "investigation",
       "annotation": "get_versions",
       "output_schema": {
@@ -952,8 +975,8 @@
           "title": "Vault Name",
           "name": "vault_name",
           "type": "text",
-          "description": "Specify the name of vault from which you want to retrieve the versions of key, secrets or certificate.",
-          "tooltip": "Specify the name of vault from which you want to retrieve the versions of key, secrets or certificate.",
+          "description": "Specify the name of the vault from which you want to retrieve the versions of keys, secrets, or certificates.",
+          "tooltip": "Specify the name of the vault from which you want to retrieve the versions of keys, secrets, or certificates. ",
           "required": true,
           "editable": true,
           "visible": true
@@ -962,8 +985,8 @@
           "title": "Object Name",
           "name": "object",
           "type": "select",
-          "description": "Specify the type of the object whose versions you want to retrieve from the key vault. You can choose one from Keys, Secrets, Certificates",
-          "tooltip": "Specify the type of the object whose versions you want to retrieve from the key vault. You can choose one from Keys, Secrets, Certificates",
+          "description": "Select the type of object whose versions you want to retrieve from the Azure key vault. You can choose one from Keys, Secrets or Certificates",
+          "tooltip": "Specify the type of the object whose versions you want to retrieve from the key vault.",
           "required": true,
           "editable": true,
           "visible": true,
@@ -978,8 +1001,8 @@
                 "title": "Key Name",
                 "name": "name",
                 "type": "text",
-                "description": "Specify the name of the key whose versions you want to retrieve from the specified key vault.",
-                "tooltip": "Specify the name of the key whose versions you want to retrieve from the specified key vault.",
+                "description": "Specify the key name, in the Key Name field, whose versions you want to retrieve from the Azure Key Vault.",
+                "tooltip": "Specify the key name, in the Key Name field, whose versions you want to retrieve from the Azure Key Vault.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -990,8 +1013,8 @@
                 "title": "Secret Name",
                 "name": "name",
                 "type": "text",
-                "description": "Specify the name of the Secret whose versions you want to retrieve from the key vault.",
-                "tooltip": "Specify the name of the Secret whose versions you want to retrieve from the key vault.",
+                "description": "Specify the secret name, in the Secret Name field, whose versions you want to retrieve from the Azure Key Vault.",
+                "tooltip": "Specify the secret name, in the Secret Name field, whose versions you want to retrieve from the Azure Key Vault.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -1002,8 +1025,8 @@
                 "title": "Certificate Name",
                 "name": "name",
                 "type": "text",
-                "description": "Specify the name of the certificate of whose versions you want to retrieve from the key vault.",
-                "tooltip": "Specify the name of the certificate of whose versions you want to retrieve from the key vault.",
+                "description": "Specify the certificate name, in the Certificate Name field, whose versions you want to retrieve from the Azure Key Vault.",
+                "tooltip": "Specify the certificate name, in the Certificate Name field, whose versions you want to retrieve from the Azure Key Vault.",
                 "required": true,
                 "editable": true,
                 "visible": true
@@ -1015,8 +1038,8 @@
           "title": "Skip Token",
           "name": "skip_token",
           "type": "text",
-          "description": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
-          "tooltip": "Skip Token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls.",
+          "description": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls.",
+          "tooltip": "Specify a skip token if a previous operation returned a partial result. If the previous response contains a nextLink element, the value of the nextLink element includes a skip token parameter that specifies a starting point to use for subsequent calls.",
           "required": false,
           "editable": true,
           "visible": true
@@ -1025,8 +1048,9 @@
           "title": "Size",
           "name": "size",
           "type": "integer",
-          "description": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
-          "tooltip": "Specifies the maximum number of results to return in a page. Should be between 1 and 25.In certain cases, the service might return fewer results than specified by Size (even 0 results) and also return a nextLink. Clients should not make any assumptions on the minimum number of results per page, and should enumerate all pages until the nextLink becomes null.",
+          "placeholder": "The value should be between 1 and 25.",
+          "description": "Specify the maximum number of versions that this operation should return from Azure Key Vault. The value should be between 1 and 25. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
+          "tooltip": "Specify the maximum number of versions that this operation should return from Azure Key Vault. In certain cases, the service might return fewer results than specified by this parameter (even 0 results) and also return a nextLink. Do not make any assumptions on the minimum number of results per page and enumerate all pages until the nextLink becomes null.",
           "required": false,
           "editable": true,
           "visible": true,

@@ -12,7 +12,6 @@ from connectors.core.utils import update_connnector_config
 
 logger = get_logger('azure-key-vault')
 
-
 class AzureKeyVault(object):
     def __init__(self, config):
         self.server_url = 'https://'
@@ -83,17 +82,14 @@ class AzureKeyVault(object):
 
 def list_key_vault(config, params):
     kv = AzureKeyVault(config)
-    subscription_id = kv.subscription_id
-    endpoint = '/resources'.format(subscription_id)
+    skip_token = params.get('skip_token')
+    endpoint = '/resources?$skiptoken={0}'.format(skip_token) if skip_token else '/resources'
     payload = {
         "$filter": "resourceType eq 'Microsoft.KeyVault/vaults'"
     }
     size = params.get('size')
     if size:
         payload["$top"] = size
-    skip_token = params.get('skip_token')
-    if skip_token:
-        payload["$skiptoken"] = skip_token
     response = kv.make_rest_call(endpoint=endpoint, params=payload, method='GET', manage_api_endpoint=True)
     return response
 
@@ -151,14 +147,12 @@ def list_or_get_keys(config, params):
         endpoint += '/{0}/{1}'.format(key_name, key_version)
         response = kv.make_rest_call(endpoint=endpoint, method='GET')
         return response
+    skip_token = params.get('skip_token')
+    endpoint += '?$skiptoken={0}'.format(skip_token) if skip_token else ''
     payload = {}
     size = params.get('size')
     if size:
         payload["maxresults"] = size
-    skip_token = params.get('skip_token')
-    if skip_token:
-        payload["$skiptoken"] = skip_token
-
     response = kv.make_rest_call(endpoint=endpoint, method='GET', params=payload)
     return response
 
@@ -184,13 +178,12 @@ def list_or_get_secret(config, params):
         endpoint += '/{0}/{1}'.format(secret_name, secret_version)
         response = kv.make_rest_call(endpoint=endpoint, method='GET')
         return response
+    skip_token = params.get('skip_token')
+    endpoint += '?$skiptoken={0}'.format(skip_token) if skip_token else ''
     payload = {}
     size = params.get('size')
     if size:
         payload["maxresults"] = size
-    skip_token = params.get('skip_token')
-    if skip_token:
-        payload["$skiptoken"] = skip_token
     response = kv.make_rest_call(endpoint=endpoint, method='GET', params=payload)
     return response
 
@@ -216,15 +209,14 @@ def list_or_get_certificate(config, params):
         endpoint += '/{0}/{1}'.format(certificate_name, certificate_version)
         response = kv.make_rest_call(endpoint=endpoint, method='GET')
         return response
+    skip_token = params.get('skip_token')
+    endpoint += '?$skiptoken={0}'.format(skip_token) if skip_token else ''
     payload = {
         "includePending": params.get('includePending')
     }
     size = params.get('size')
     if size:
         payload["maxresults"] = size
-    skip_token = params.get('skip_token')
-    if skip_token:
-        payload["$skiptoken"] = skip_token
     response = kv.make_rest_call(endpoint=endpoint, method='GET', params=payload)
     return response
 
@@ -256,13 +248,12 @@ def get_versions(config, params):
     name = params.get('name', '')
     obj = params.get('object', '').lower()
     endpoint = '{0}.vault.azure.net/{1}/{2}/versions'.format(vault_name, obj, name)
+    skip_token = params.get('skip_token')
+    endpoint += '?$skiptoken={0}'.format(skip_token) if skip_token else ''
     payload = {}
     size = params.get('size')
     if size:
         payload["maxresults"] = size
-    skip_token = params.get('skip_token')
-    if skip_token:
-        payload["$skiptoken"] = skip_token
     response = kv.make_rest_call(endpoint=endpoint, method='GET', params=payload)
     return response
 
