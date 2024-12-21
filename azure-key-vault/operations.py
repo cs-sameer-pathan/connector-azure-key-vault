@@ -12,6 +12,7 @@ from connectors.core.utils import update_connnector_config
 
 logger = get_logger('azure-key-vault')
 
+
 class AzureKeyVault(object):
     def __init__(self, config):
         self.server_url = 'https://'
@@ -44,7 +45,8 @@ class AzureKeyVault(object):
         try:
             if data:
                 data = json.dumps(data)
-            response = requests.request(method, service_url, data=data, headers=headers, params=params, verify=self.verify_ssl)
+            response = requests.request(method, service_url, data=data, headers=headers, params=params,
+                                        verify=self.verify_ssl)
             if response.ok:
                 content_type = response.headers.get('Content-Type')
                 if response.text != "" and 'application/json' in content_type:
@@ -67,8 +69,8 @@ class AzureKeyVault(object):
             logger.error('An SSL error occurred')
             raise ConnectorError('An SSL error occurred')
         except requests.exceptions.ConnectionError:
-            logger.error('A connection error occurred')
-            raise ConnectorError('A connection error occurred')
+            logger.error('A connection error occurred.')
+            raise ConnectorError('A connection error occurred.')
         except requests.exceptions.Timeout:
             logger.error('The request timed out')
             raise ConnectorError('The request timed out')
@@ -141,7 +143,7 @@ def list_or_get_keys(config, params):
     kv = AzureKeyVault(config)
     vault_name = params.get('vault_name', '')
     key_name = params.get('key_name', '')
-    key_version = params.get('key-version', '')
+    key_version = params.get('key-version', '') or ''
     endpoint = '{0}.vault.azure.net/keys'.format(vault_name)
     if key_name:
         endpoint += '/{0}/{1}'.format(key_name, key_version)
@@ -171,9 +173,9 @@ def list_or_get_secret(config, params):
     config['scope'] = VAULT_SCOPE
     kv = AzureKeyVault(config)
     vault_name = params.get('vault_name')
-    endpoint = '{0}.vault.azure.net/secrets/'.format(vault_name)
+    endpoint = '{0}.vault.azure.net/secrets'.format(vault_name)
     secret_name = params.get('secret_name', '')
-    secret_version = params.get('secret_version', '')
+    secret_version = params.get('secret_version', '') or ''
     if secret_name:
         endpoint += '/{0}/{1}'.format(secret_name, secret_version)
         response = kv.make_rest_call(endpoint=endpoint, method='GET')
@@ -204,7 +206,7 @@ def list_or_get_certificate(config, params):
     vault_name = params.get('vault_name')
     endpoint = '{0}.vault.azure.net/certificates'.format(vault_name)
     certificate_name = params.get('certificate_name', '')
-    certificate_version = params.get('certificate-version', '')
+    certificate_version = params.get('certificate-version', '') or ''
     if certificate_name:
         endpoint += '/{0}/{1}'.format(certificate_name, certificate_version)
         response = kv.make_rest_call(endpoint=endpoint, method='GET')
@@ -290,9 +292,48 @@ def check(config, connector_info):
             update_connnector_config(connector_info['connector_name'], connector_info['connector_version'], config,
                                      config['config_id']) and ms.validate_vault_token(config, connector_info)
         config['config_id'] = config_id
+        if config.get('use_vault'):
+            get_credentials(config, {})
         return True
     except Exception as err:
         raise ConnectorError(str(err))
+
+
+def get_credentials(config, params):
+    config['scope'] = VAULT_SCOPE
+    kv = AzureKeyVault(config)
+    vault_name = config.get('vault_name')
+    endpoint = '{0}.vault.azure.net/secrets/?'.format(vault_name)
+    payload = {}
+    size = params.get('size')
+    if size:
+        payload["maxresults"] = size
+    response = kv.make_rest_call(endpoint=endpoint, method='GET', params=payload)
+    formatted_response = []
+    for secret in response.get('value', []):
+        secret_name = secret.get('id').split('secrets/')[-1]
+        formatted_response.append({"key": secret_name, "display_name": secret_name})
+    return formatted_response
+
+
+def get_credentials_details(config, params):
+    formatted_response = [
+        {
+            "field_name": "Secret Value",
+            "value": "*****"
+        }
+    ]
+    return formatted_response
+
+
+def get_credential(config, params):
+    config['scope'] = VAULT_SCOPE
+    kv = AzureKeyVault(config)
+    vault_name = config.get('vault_name')
+    secret_name = params.get('secret_id')
+    endpoint = '{0}.vault.azure.net/secrets/{1}'.format(vault_name, secret_name)
+    response = kv.make_rest_call(endpoint=endpoint, method='GET')
+    return {"password": response.get('value')}
 
 
 operations = {
@@ -310,5 +351,9 @@ operations = {
     'get_certificate': list_or_get_certificate,
     'delete_certificate': delete_certificate,
     'get_certificate_policy': get_certificate_policy,
-    'get_versions': get_versions
+    'get_versions': get_versions,
+
+    'get_credentials': get_credentials,
+    'get_credentials_details': get_credentials_details,
+    'get_credential': get_credential
 }
