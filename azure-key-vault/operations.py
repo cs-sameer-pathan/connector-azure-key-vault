@@ -117,7 +117,7 @@ def delete_key_vault(config, params):
     response = kv.make_rest_call(endpoint=endpoint, method='DELETE', manage_api_endpoint=True)
     result = {
         "status": response.status_code,
-        "result": "Successfully deleted the vault "
+        "result": "Successfully deleted the vault"
     }
     return result
 
