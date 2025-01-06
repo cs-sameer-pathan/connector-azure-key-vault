@@ -1,0 +1,132 @@
+{
+    "config": [
+        {
+            "tenant_id": "",
+            "subscription_id": "",
+            "client_id": "",
+            "client_secret": "",
+            "use_vault": false,
+            "verify_ssl": true
+        }
+    ],
+    "list_key_vault": [
+        {
+            "skip_token": null,
+            "size": null
+        }
+    ],
+    "get_key_vault": [
+        {
+            "vault_name": "fsrintg-vault",
+            "resource_group_name": "FTNT-FSR-PUNE-OFFICE"
+        }
+    ],
+    "delete_key_vault": [
+        {
+            "vault_name": "fsrintg-vault1",
+            "resource_group_name": "FTNT-FSR-PUNE-OFFICE"
+        }
+    ],
+    "update_vault_access_policy": [
+        {
+            "vault_name": "fsrintg-vault",
+            "resource_group_name": "FTNT-FSR-PUNE-OFFICE",
+            "operation_kind": "Add",
+            "accessPolicies": {
+                "accessPolicies": [
+                    {
+                        "tenantId": "8c041846-239e-44fb-9be0-ecbf4f9c8a41",
+                        "objectId": "00000000-0000-0000-0000-000000000000",
+                        "permissions": {
+                            "keys": [
+                                "encrypt"
+                            ],
+                            "secrets": [
+                                "get"
+                            ],
+                            "certificates": [
+                                "get"
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "list_keys": [
+        {
+            "vault_name": "fsrintg-vault",
+            "skip_token": null,
+            "size": null
+        }
+    ],
+    "get_key": [
+        {
+            "vault_name": "fsrintg-vault",
+            "key_name": "test",
+            "key-version": null
+        }
+    ],
+    "delete_key": [
+        {
+            "vault_name": "fsrintg-vault",
+            "key_name": "test1"
+        }
+    ],
+    "list_secret": [
+        {
+            "vault_name": "fsrintg-vault",
+            "size": null,
+            "skip_token": null
+        }
+    ],
+    "get_secret": [
+        {
+            "vault_name": "fsrintg-vault",
+            "secret_name": "test",
+            "secret_version": null
+        }
+    ],
+    "delete_secret": [
+        {
+            "vault_name": "fsrintg-vault",
+            "secret_name": "test1"
+        }
+    ],
+    "list_certificate": [
+        {
+            "vault_name": "fsrintg-vault",
+            "includePending": false,
+            "skip_token": null,
+            "size": null
+        }
+    ],
+    "get_certificate": [
+        {
+            "vault_name": "fsrintg-vault",
+            "certificate_name": "cert",
+            "certificate-version": null
+        }
+    ],
+    "delete_certificate": [
+        {
+            "vault_name": "fsrintg-vault",
+            "certificate_name": "cert1"
+        }
+    ],
+    "get_certificate_policy": [
+        {
+            "vault_name": "fsrintg-vault",
+            "certificate_name": "cert"
+        }
+    ],
+    "get_versions": [
+        {
+            "vault_name": "fsrintg-vault",
+            "object": "Keys",
+            "name": "test",
+            "skip_token": null,
+            "size": 25
+        }
+    ]
+}

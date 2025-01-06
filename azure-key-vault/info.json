@@ -5,11 +5,14 @@
   "publisher": "Fortinet",
   "cs_approved": true,
   "cs_compatible": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "category": "Identity and Access Management",
+  "tags": [
+    "vault"
+  ],
   "icon_small_name": "small.png",
   "icon_large_name": "large.png",
-  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/azure-key-vault/553/azure-key-vault-v1-0-0",
+  "help_online": "",
   "configuration": {
     "fields": [
       {
@@ -55,6 +58,30 @@
         "editable": true,
         "visible": true,
         "value": ""
+      },
+      {
+        "title": "Use As Vault",
+        "required": false,
+        "editable": true,
+        "visible": true,
+        "value": false,
+        "type": "checkbox",
+        "name": "use_vault",
+        "description": "Azure Key Vault integration has other important actions apart from its usage as purely a vault. However, if you intend to use it as a vault in the system, check this option, i.e., set it to \"True\" and configure the following additional parameter that are required parameter Vault Name: Name of the vault that stores the credentials.",
+        "tooltip": "Azure Key Vault integration has other important actions apart from its usage as purely a vault. However, if you intend to use it as a vault in the system, check this option, i.e., set it to \"True\".",
+        "onchange": {
+          "true": [
+            {
+              "title": "Vault Name",
+              "name": "vault_name",
+              "description": "Name of the vault that stores the passwords.",
+              "type": "text",
+              "visible": true,
+              "editable": true,
+              "required": true
+            }
+          ]
+        }
       },
       {
         "title": "Verify SSL",
@@ -142,6 +169,12 @@
             }
           ],
           "enabledForDeployment": "",
+          "networkAcls": {
+            "bypass": "",
+            "ipRules": [],
+            "defaultAction": "",
+            "virtualNetworkRules": []
+          },
           "enabledForDiskEncryption": "",
           "enabledForTemplateDeployment": "",
           "enableSoftDelete": "",
@@ -311,12 +344,16 @@
           {
             "kid": "",
             "attributes": {
+              "exp": "",
+              "nbf": "",
               "enabled": "",
               "created": "",
               "updated": "",
               "recoveryLevel": "",
-              "exportable": ""
+              "exportable": "",
+              "recoverableDays": ""
             },
+            "managed": "",
             "tags": {}
           }
         ],
@@ -375,7 +412,9 @@
           "enabled": "",
           "created": "",
           "updated": "",
-          "recoveryLevel": ""
+          "recoveryLevel": "",
+          "recoverableDays": "",
+          "exportable": ""
         },
         "tags": {}
       },
@@ -435,7 +474,8 @@
           "created": "",
           "updated": "",
           "recoveryLevel": "",
-          "exportable": ""
+          "exportable": "",
+          "recoverableDays": ""
         },
         "tags": {}
       },
@@ -480,8 +520,10 @@
               "exp": "",
               "created": "",
               "updated": "",
-              "recoveryLevel": ""
+              "recoveryLevel": "",
+              "recoverableDays": ""
             },
+            "managed": "",
             "tags": {}
           }
         ],
@@ -538,7 +580,8 @@
           "exp": "",
           "created": "",
           "updated": "",
-          "recoveryLevel": ""
+          "recoveryLevel": "",
+          "recoverableDays": ""
         },
         "tags": {}
       },
@@ -594,7 +637,8 @@
           "exp": "",
           "created": "",
           "updated": "",
-          "recoveryLevel": ""
+          "recoveryLevel": "",
+          "recoverableDays": ""
         },
         "tags": {}
       },
@@ -710,7 +754,8 @@
           "exp": "",
           "created": "",
           "updated": "",
-          "recoveryLevel": ""
+          "recoveryLevel": "",
+          "recoverableDays": ""
         },
         "tags": {},
         "policy": {
@@ -967,7 +1012,20 @@
       "category": "investigation",
       "annotation": "get_versions",
       "output_schema": {
-        "value": [],
+        "value": [
+          {
+            "kid": "",
+            "tags": {},
+            "attributes": {
+              "created": "",
+              "enabled": "",
+              "updated": "",
+              "exportable": "",
+              "recoveryLevel": "",
+              "recoverableDays": ""
+            }
+          }
+        ],
         "nextLink": ""
       },
       "parameters": [
@@ -1058,6 +1116,73 @@
         }
       ],
       "enabled": true
+    },
+    {
+      "operation": "get_credentials",
+      "title": "Get Credentials",
+      "description": "Retrieves a list of the secrets from the Azure Key Vault based on the vault name you have specified. ",
+      "category": "investigation",
+      "annotation": "get_credentials",
+      "output_schema": [
+        {
+          "key": "",
+          "display_name": ""
+        }
+      ],
+      "parameters": [],
+      "enabled": true,
+      "visible": true
+    },
+    {
+      "operation": "get_credentials_details",
+      "title": "Get Credentials Details",
+      "description": "Gets a Secret from specified Azure Key Vault vault name, secret name, and the secret version you have specified. ",
+      "category": "investigation",
+      "annotation": "get_credentials_details",
+      "output_schema": [
+        {
+          "field_name": "",
+          "value": ""
+        }
+      ],
+      "parameters": [
+        {
+          "title": "Secret Name",
+          "name": "secret_id",
+          "type": "text",
+          "description": "Specify the name of the secret to retrieve from the key vault. ",
+          "tooltip": "Specify the name of the secret to retrieve from the key vault. ",
+          "required": true,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "enabled": true,
+      "visible": false
+    },
+    {
+      "operation": "get_credential",
+      "title": "Get Credential",
+      "description": "Gets a Secret from specified Azure Key Vault vault name, secret name, and the secret version you have specified.",
+      "category": "investigation",
+      "annotation": "get_credential",
+      "output_schema": {
+        "password": ""
+      },
+      "parameters": [
+        {
+          "title": "Secret Name",
+          "name": "secret_id",
+          "type": "text",
+          "description": "Specify the name of the secret to retrieve from the key vault. ",
+          "tooltip": "Specify the name of the secret to retrieve from the key vault. ",
+          "required": true,
+          "editable": true,
+          "visible": true
+        }
+      ],
+      "enabled": true,
+      "visible": false
     }
   ]
 }
