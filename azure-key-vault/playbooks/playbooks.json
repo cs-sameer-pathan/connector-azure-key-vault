@@ -35,7 +35,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "skip_token": "",
                   "size": ""
@@ -106,7 +106,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "resource_group_name": ""
@@ -177,7 +177,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "resource_group_name": ""
@@ -248,7 +248,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "resource_group_name": "",
@@ -339,7 +339,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "skip_token": "",
@@ -411,7 +411,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "key_name": "",
@@ -483,7 +483,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "key_name": ""
@@ -554,7 +554,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "size": "",
@@ -626,7 +626,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "secret_name": "",
@@ -698,7 +698,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "secret_name": ""
@@ -769,7 +769,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "includePending": "",
@@ -842,7 +842,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "certificate_name": "",
@@ -914,7 +914,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "certificate_name": ""
@@ -985,7 +985,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "certificate_name": ""
@@ -1056,7 +1056,7 @@
               "status": null,
               "arguments": {
                 "name": "Azure Key Vault",
-                "config": "''",
+                "config": "",
                 "params": {
                   "vault_name": "",
                   "object": "",

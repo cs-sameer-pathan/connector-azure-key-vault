@@ -1131,7 +1131,7 @@
       ],
       "parameters": [],
       "enabled": true,
-      "visible": false
+      "visible": true
     },
     {
       "operation": "get_credentials_details",
